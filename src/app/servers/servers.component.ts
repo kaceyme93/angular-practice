@@ -10,7 +10,8 @@ export class ServersComponent {
   serverCreationStatus= 'Server not created';
   serverName='Default name';
   username = "";
-  allowButtonClick = false;
+  serverCreated = false;
+  servers = ['Testserver', 'Testserver 2']
 
   constructor() {
     setTimeout(() => {
@@ -23,22 +24,12 @@ export class ServersComponent {
   }
 
   onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server was created. Server name: ' + this.serverName;
   }
 
   onUpdateServerName(e: Event) {
     this.serverName= (<HTMLInputElement>e.target).value;
-  }
-
-  
-  checkAllowButtonClick() {
-    if (this.username != "") {
-      this.allowButtonClick = true;
-    }
-  }
-
-  resetUsername() {
-    this.username = "";
-    this.allowButtonClick = false;
   }
 }
